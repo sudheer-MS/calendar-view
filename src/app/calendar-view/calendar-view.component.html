@@ -1,0 +1,43 @@
+<div ngClass="button-container">
+  <div ngClass="date-container">
+    <h1>{{ monthDate | date: "MMM" }}</h1>
+    <h1>{{ monthDate | date: "Y" }}</h1>
+  </div>
+  <div>
+    <mat-icon ngClass="arrow-button" (click)="onClickBack()"
+      >arrow_back_ios</mat-icon
+    >
+    <mat-icon ngClass="arrow-button" (click)="onClickNext()"
+      >arrow_forward_ios</mat-icon
+    >
+  </div>
+  <div ngClass="button-container">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle
+        [ngClass]="{ 'select-button': selectButton == 'month' }"
+        value="month"
+        (click)="onToggleButton('month')"
+        >Month</mat-button-toggle
+      >
+      <mat-button-toggle
+        [ngClass]="{ 'select-button': selectButton == 'week' }"
+        value="week"
+        (click)="onToggleButton('week')"
+        >Week</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+<div *ngIf="selectButton == 'week'" ngClass="container">
+  <div ngClass="date" *ngFor="let day of week">
+    <p>{{ day | date: "EEE" }}</p>
+    <p>{{ day.getDate() }}</p>
+  </div>
+</div>
+<div *ngIf="selectButton == 'month'" ngClass="container ">
+  <div ngClass="date" *ngFor="let day of month">
+    <p>{{ day | date: "EEE" }}</p>
+    <p>{{ day.getDate() }}</p>
+  </div>
+</div>

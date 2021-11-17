@@ -1,13 +1,20 @@
-.container {
-  width: 100vw;
+.calendar-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
 
 .date {
-  border: solid 1px;
+  border: solid 1px rgb(194, 193, 193);
   width: 100%;
   text-align: center;
+}
+
+.current-date {
+  border: solid 1px rgb(194, 193, 193);
+  width: 100%;
+  text-align: center;
+  background-color: rgb(206, 219, 16);
 }
 
 .date-container {
@@ -15,6 +22,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 16px;
+  margin-right: 20px;
 }
 
 .button-container {
@@ -22,6 +31,8 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  margin-left: 20px;
+  margin-right: 15px;
 }
 
 .select-button {
@@ -30,5 +41,5 @@
 
 .arrow-button {
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 25px;
 }

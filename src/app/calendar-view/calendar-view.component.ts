@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '../services/calendar.service';
 import {
+  format,
   isSameMonth,
   addDays,
   subDays,
@@ -15,11 +16,13 @@ import {
   styleUrls: ['./calendar-view.component.css'],
 })
 export class CalendarViewComponent implements OnInit {
+  currentDate = format(new Date(), 'MM/dd/yyyy');
   month: any[] = [];
   week: any[];
   monthDate: any = new Date();
   weekDate: any = new Date();
   selectButton: string = 'month';
+
   constructor(private _calendarService: CalendarService) {}
 
   getWeekData = (date) => {
@@ -43,6 +46,7 @@ export class CalendarViewComponent implements OnInit {
   ngOnInit(): void {
     this.getWeekData(this.weekDate);
     this.getMonthData(this.monthDate);
+    console.log(this.currentDate);
   }
 
   onToggleButton = (value: string) => {
@@ -67,9 +71,13 @@ export class CalendarViewComponent implements OnInit {
     let lastDayMonth = lastDayOfMonth(this.monthDate);
     this.monthDate = addDays(lastDayMonth, 1);
     this.getMonthData(this.monthDate);
-
+    console.log(this.monthDate);
     let lastDayWeek = lastDayOfWeek(this.weekDate);
     this.weekDate = addDays(lastDayWeek, 1);
     this.getWeekData(this.weekDate);
+  };
+
+  formatDate = (date: any) => {
+    return format(date, 'MM/dd/yyyy');
   };
 }

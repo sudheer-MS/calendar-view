@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
-import { format } from 'date-fns';
+
 @NgModule({
   declarations: [AppComponent, CalendarViewComponent],
   imports: [
@@ -15,6 +16,7 @@ import { format } from 'date-fns';
     BrowserAnimationsModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatExpansionModule,
     MatIconModule,
   ],
   providers: [],

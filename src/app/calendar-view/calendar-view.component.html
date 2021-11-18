@@ -50,6 +50,10 @@
       <mat-expansion-panel
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false"
+        [ngStyle]="{
+          left: monthDistance(task.startDate),
+          width: monthWidth(task.startDate, task.endDate)
+        }"
       >
         <mat-expansion-panel-header>
           <mat-panel-title> {{ task.taskName }} </mat-panel-title>
@@ -75,13 +79,11 @@
   </div>
 
   <div>
-    <mat-accordion
-      *ngFor="let task of currentWeekTasks"
-      [ngStyle]="{ display: 'inline' }"
-    >
+    <mat-accordion *ngFor="let task of currentWeekTasks">
       <mat-expansion-panel
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false"
+        [ngStyle]="{ left: weekDistance(task.startDate) }"
       >
         <mat-expansion-panel-header>
           <mat-panel-title> {{ task.taskName }} </mat-panel-title>

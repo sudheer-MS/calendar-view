@@ -10,6 +10,11 @@ import {
   lastDayOfWeek,
   startOfWeek,
   isSameWeek,
+  differenceInDays,
+  isLastDayOfMonth,
+  isFirstDayOfMonth,
+  isSaturday,
+  isSunday,
 } from 'date-fns';
 @Component({
   selector: 'app-calendar-view',
@@ -135,5 +140,28 @@ export class CalendarViewComponent implements OnInit {
 
   formatDate = (date: any) => {
     return format(date, 'MM/dd/yyyy');
+  };
+
+  monthDistance = (date: any) => {
+    if (isLastDayOfMonth(date) || isFirstDayOfMonth(date)) {
+      return '0em';
+    }
+    return `${(date.getDate() - 1) * 3.65}em`;
+  };
+
+  weekDistance = (date: any) => {
+    if (isSaturday(date) || isSunday(date)) {
+      return '0em';
+    }
+    return `${date.getDate() * 3}em`;
+  };
+
+  monthWidth = (startDate: any, endDate: any) => {
+    console.log('hi');
+    return `${(differenceInDays(endDate, startDate) + 1) * 3.65}em`;
+  };
+
+  weekWidth = (startDate: any, endDate: any) => {
+    return `${(differenceInDays(endDate, startDate) + 1) * 3.65}em`;
   };
 }
